@@ -28,9 +28,9 @@ class Graph
 		void printList(Node *edges);
 		void startDFS(int start);
 		void startDFS2(int start);
-		void resetNodesVisited();
 		void DFS(Node *edges);
 		void DFS2(Node *edges);
+		void resetNodesVisited();
 		void startReverse();
 		void reverse(Node *edges, Node *parent);
 		void showStronglyConectedComponents();
@@ -145,7 +145,7 @@ void Graph::printList(Node *edges)
 	cout<< " ("<< edges->vertex<< ")   ";
 	
 	// KEEP ITERATING
-    printList(edges->next);
+   	printList(edges->next);
 }
 
 void Graph::startkosarajuAlgo()
@@ -200,13 +200,13 @@ void Graph::DFS(Node *edges)
 	// END OF THE LIST
 	if (edges == NULL) return;	
     
-    // GET NEIGHBOR
-    int index = CONVERT_CHAR_TO_INDEX(edges->vertex);
+    	// GET NEIGHBOR
+    	int index = CONVERT_CHAR_TO_INDEX(edges->vertex);
     
-    if (!isVisited[index]) {
-    	// RECURSIVE FUNCTION
-    	startDFS(CONVERT_CHAR_TO_INDEX(adjacencyList[index]->vertex));
-    	return;
+    	if (!isVisited[index]) {
+    		// RECURSIVE FUNCTION
+    		startDFS(CONVERT_CHAR_TO_INDEX(adjacencyList[index]->vertex));
+    		return;
 	}
 	
 	// GO DEEPLY
@@ -225,11 +225,11 @@ void Graph::DFS2(Node *edges)
 {
 	if (edges == NULL) return;	
     
-    int index = CONVERT_CHAR_TO_INDEX(edges->vertex);
+    	int index = CONVERT_CHAR_TO_INDEX(edges->vertex);
     
-    if (!isVisited[index]) {
-    	startDFS2(CONVERT_CHAR_TO_INDEX(adjacencyList_aux[index]->vertex));
-    	return;
+    	if (!isVisited[index]) {
+    		startDFS2(CONVERT_CHAR_TO_INDEX(adjacencyList_aux[index]->vertex));
+    		return;
 	}
 	
 	DFS2(edges->next);
@@ -246,9 +246,9 @@ void Graph::reverse(Node *edges, Node *parent)
 {
 	if (edges == NULL) return;
 	
-	int src = CONVERT_CHAR_TO_INDEX(edges->vertex);
+	int source = CONVERT_CHAR_TO_INDEX(edges->vertex);
 	
-	insertList(adjacencyList_aux[src], parent->vertex);
+	insertList(adjacencyList_aux[source], parent->vertex);
 	
 	reverse(edges->next, parent);
 }
